@@ -1,4 +1,4 @@
-import React from "react";
+import { useAuth } from "@clerk/clerk-react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Layout from "./pages/Layout";
@@ -10,8 +10,13 @@ import RemoveBackground from "./pages/RemoveBackground";
 import RemoveObject from "./pages/RemoveObject";
 import ReviewResume from "./pages/ReviewResume";
 import Community from "./pages/Community";
+import { useEffect } from "react";
 
 const App = () => {
+  const { getToken } = useAuth(); // Example usage of useAuth hook
+  useEffect(() => {
+    getToken().then((token) => console.log(token));
+  }, []);
   return (
     <div>
       <Routes>
@@ -23,7 +28,7 @@ const App = () => {
           <Route path="generate-images" element={<GenerateImages />} />
           <Route path="remove-background" element={<RemoveBackground />} />
           <Route path="remove-object" element={<RemoveObject />} />
-          <Route path="review-resume" element={<ReviewResume   />} />
+          <Route path="review-resume" element={<ReviewResume />} />
           <Route path="community" element={<Community />} />
         </Route>
       </Routes>
