@@ -1,4 +1,3 @@
-import { useAuth } from "@clerk/clerk-react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Layout from "./pages/Layout";
@@ -10,15 +9,12 @@ import RemoveBackground from "./pages/RemoveBackground";
 import RemoveObject from "./pages/RemoveObject";
 import ReviewResume from "./pages/ReviewResume";
 import Community from "./pages/Community";
-import { useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
-  const { getToken } = useAuth(); // Example usage of useAuth hook
-  useEffect(() => {
-    getToken().then((token) => console.log(token));
-  }, []);
   return (
     <div>
+      <Toaster />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ai" element={<Layout />}>
